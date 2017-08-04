@@ -11,9 +11,15 @@ export function inputPassword(password){
   const auth = axios({
     method: 'post',
     url: url,
-    data: {
-      password: password,
+    body: {
+      password: password
+    },
+    headers: {
+      "Accept": "application/json,text/plain,*/*",
+      "Content-Type": "application/json"
     }
+  }).then(res => {
+    res.json()
   })
   return {
     type:INPUT_PASSWORD,

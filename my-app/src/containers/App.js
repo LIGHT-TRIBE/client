@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="App grey">
         <div>
-          <LoginModal inputPassword={this.props.onInputPassword}/>
+          {!localStorage.auth && <LoginModal inputPassword={this.props.onInputPassword}/>}
           <Header
             palette={colorData.palette}
             setColor={this.props.onSetActiveColor}
