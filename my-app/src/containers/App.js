@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import Matrix from '../components/Matrix'
-import {setActiveColor, fetchPalette, exportSocketsUpdate} from '../actions'
+import {setActiveColor, fetchPalette, exportSocketsUpdate, inputPassword} from '../actions'
 import LoginModal from '../components/LoginModal'
 
 class App extends Component {
@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="App grey">
         <div>
-          <LoginModal />
+          <LoginModal inputPassword={this.props.onInputPassword}/>
           <Header
             palette={colorData.palette}
             setColor={this.props.onSetActiveColor}
@@ -47,7 +47,8 @@ const mapDispatchToProps=(dispatch)=>{
   return{
     onSetActiveColor:(color)=>{dispatch(setActiveColor(color))},
     onFetchPalette:()=>{dispatch(fetchPalette())},
-    onExportSocketsUpdate:(data)=>{dispatch(exportSocketsUpdate(data))}
+    onExportSocketsUpdate:(data)=>{dispatch(exportSocketsUpdate(data))},
+    onInputPassword:(password)=>{dispatch(inputPassword(password))}
   }
 }
 
