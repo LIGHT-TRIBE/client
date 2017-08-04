@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Header from '../components/Header'
 import Matrix from '../components/Matrix'
 import {setActiveColor, fetchPalette, exportSocketsUpdate} from '../actions'
+import LoginModal from '../components/LoginModal'
 
 class App extends Component {
   constructor(props){
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <div className="App grey">
         <div>
+          <LoginModal />
           <Header
             palette={colorData.palette}
             setColor={this.props.onSetActiveColor}
