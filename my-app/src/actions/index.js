@@ -7,18 +7,27 @@ export const FETCH_PALETTE = 'fetch_palette'
 export const INPUT_PASSWORD = 'input_password'
 
 export function inputPassword(password){
-  console.log(password)
-  const url = "http://localhost/3000/auth/"
-  const auth = axios.post(url,{
-    password:password
-  }).then(res => {
-    console.log(res.json())
-    return res.json()
-  }).catch(err=>console.log(err))
+  const auth=()=>{
+    const url = "http://localhost/3000/auth"
+    const format = new Request(url, {
+      method: 'POST',
+      body:{"password":password},
+      headers:{
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+    return fetch(format)
+      .then((res)=>{
+        console.log(res);
+        return res.json()})
+      .catch(err=>console.log(err))
+  }
   return {
     type:INPUT_PASSWORD,
-    payload: auth
+    payload: auth()
   }
+
 }
 
 export function exportSocketsUpdate(data){
