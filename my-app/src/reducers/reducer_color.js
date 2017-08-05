@@ -10,12 +10,10 @@ export default function colorReducer(state=initialState, action){
       return action.payload
     case SET_ACTIVE_COLOR:{
       const newState = {...state}
-      newState.activeColor = {...newState.activeColor}
       newState.activeColor = action.payload
       return newState}
     case FETCH_PALETTE:{
       const newState = {...state}
-      newState.palette = {...newState.palette}
       newState.palette = action.payload
       return newState}
     default:

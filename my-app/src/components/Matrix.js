@@ -4,9 +4,7 @@ import Dot from './Dot'
 export default class Matrix extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      cachedArray:this.props.dummyArray
-    }
+    this.state = {cachedArray:this.props.dummyArray}
     this.sendSocketsState = this.sendSocketsState.bind(this)
   }
 

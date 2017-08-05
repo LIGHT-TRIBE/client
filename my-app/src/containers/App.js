@@ -6,15 +6,10 @@ import Matrix from '../components/Matrix'
 import {setActiveColor, fetchPalette, exportSocketsUpdate, inputPassword} from '../actions'
 import LoginModal from '../components/LoginModal'
 
-
-
-
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      users: 0
-    }
+    this.state = {users: 0}
     this.updateState = this.updateState.bind(this)
   }
   componentWillMount(){this.props.onFetchPalette()}
@@ -45,7 +40,7 @@ class App extends Component {
             activeColor={colorData.activeColor}
             exportSocketsUpdate={this.props.onExportSocketsUpdate}
             updateState={this.updateState}/>
-          <div className="container users">Users: {this.state.users}</div>
+          <div className="userNum">{this.state.users} active {this.state.users==1?'user':'users'}</div>
         </div>
       </div>
     )
