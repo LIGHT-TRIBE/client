@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 export const IMPORT_SOCKETS_UPDATE = 'server/import_master_update'
 export const EXPORT_SOCKETS_UPDATE = 'server/export_master_update'
 export const UPDATE_PIXEL_VALUE = 'update_pixel_value'

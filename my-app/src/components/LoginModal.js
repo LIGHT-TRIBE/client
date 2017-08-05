@@ -11,7 +11,7 @@ export default class LoginModal extends Component {
     }
   }
 
-  handleInput = (e) => {
+  handleInput(e){
     const passwordInput = e.target.value;
     const stars = (input) => {
       const starArray = []
@@ -27,7 +27,7 @@ export default class LoginModal extends Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit(e){
     e.preventDefault()
     this.props.inputPassword(this.state.password)
   }

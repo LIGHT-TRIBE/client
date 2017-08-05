@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <div className="App grey">
         <div>
-          {localStorage.auth == undefined && <LoginModal inputPassword={this.props.onInputPassword}/>}
+          {localStorage.auth !== undefined && <LoginModal inputPassword={this.props.onInputPassword}/>}
           <Header
             palette={colorData.palette}
             setColor={this.props.onSetActiveColor}
