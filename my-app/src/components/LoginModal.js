@@ -1,23 +1,48 @@
 import React, { Component } from 'react'
 
 export default class LoginModal extends Component {
+  constructor(props){
+    super(props)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {
+      password: "",
+      stars: ""
+    }
+  }
+
+  handleInput = (e) => {
+    const passwordInput = e.target.value;
+    const stars = (input) => {
+      const starArray = []
+      const splitter = input.split("")
+      for(let i of splitter){
+        starArray.push('*')
+      }
+      return starArray.join('')
+    }
+    this.setState({
+      password: passwordInput,
+      stars: stars(passwordInput)
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.inputPassword(this.state.password)
+  }
+
   render(){
     return (
-      <div className="modal fade" tabindex="-1" role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 className="modal-title">Modal title</h4>
-            </div>
-            <div className="modal-body">
-              <p>One fine body&hellip;</p>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
-            </div>
+      <div className="loginContainer">
+        <div className="screen">
+        </div>
+        <div className="loginModal">
+        <form onSubmit={this.handleSubmit}>
+          <div className="input-group">
+            <input type="text" className="form-control codeInput" placeholder="PASSWORD" value={this.state.password} onChange={this.handleInput} aria-describedby="basic-addon1"/>
           </div>
+        </form>
         </div>
       </div>
     )
