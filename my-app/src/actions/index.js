@@ -1,9 +1,25 @@
+import axios from "axios"
 export const IMPORT_SOCKETS_UPDATE = 'server/import_master_update'
 export const EXPORT_SOCKETS_UPDATE = 'server/export_master_update'
 export const UPDATE_PIXEL_VALUE = 'update_pixel_value'
 export const SET_ACTIVE_COLOR = 'set_active_color'
 export const FETCH_PALETTE = 'fetch_palette'
-export const GET_NUMBER_USERS = 'get_number_users'
+export const INPUT_PASSWORD = 'input_password'
+
+export function inputPassword(password){
+  console.log(password)
+  const url = "http://localhost/3000/auth/"
+  const auth = axios.post(url,{
+    password:password
+  }).then(res => {
+    console.log(res.json())
+    return res.json()
+  }).catch(err=>console.log(err))
+  return {
+    type:INPUT_PASSWORD,
+    payload: auth
+  }
+}
 
 export function exportSocketsUpdate(data){
   return {
