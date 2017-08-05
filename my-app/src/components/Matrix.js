@@ -4,6 +4,9 @@ import Dot from './Dot'
 export default class Matrix extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      cachedArray:this.props.dummyArray
+    }
     this.sendSocketsState = this.sendSocketsState.bind(this)
   }
 
@@ -12,11 +15,13 @@ export default class Matrix extends Component {
   }
 
   sendSocketsState(i, updatedColor){
+    this.setState({cachedArray:this.props.realArray})
     this.props.updateState(i, updatedColor)
   }
 
   render() {
-    const input = this.props.realArray?this.props.realArray:this.props.dummyArray
+    const current = this.props.realArray
+    const input = this.props.realArray?this.props.realArray:this.state.cachedArray
     const matrix = input.map((color, i)=>{
       return (
         <Dot key={i}

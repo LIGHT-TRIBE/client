@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Palette from './Palette'
+import Slider from './Slider'
 
 export default class Header extends Component {
   render(){
@@ -15,6 +16,8 @@ export default class Header extends Component {
                 activeColor={this.props.activeColor}
                 setColor={this.props.setColor} />
             </div>
+
+              {/*<Slider className="slider"/>*/}
         </div>
       </nav>
     )
