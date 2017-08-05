@@ -7,20 +7,14 @@ export const FETCH_PALETTE = 'fetch_palette'
 export const INPUT_PASSWORD = 'input_password'
 
 export function inputPassword(password){
-  const url = "http://localhost/3000/auth"
-  const auth = axios({
-    method: 'post',
-    url: url,
-    body: {
-      password: password
-    },
-    headers: {
-      "Accept": "application/json,text/plain,*/*",
-      "Content-Type": "application/json"
-    }
+  console.log(password)
+  const url = "http://localhost/3000/auth/"
+  const auth = axios.post(url,{
+    password:password
   }).then(res => {
-    res.json()
-  })
+    console.log(res.json())
+    return res.json()
+  }).catch(err=>console.log(err))
   return {
     type:INPUT_PASSWORD,
     payload: auth

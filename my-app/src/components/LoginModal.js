@@ -4,7 +4,7 @@ export default class LoginModal extends Component {
   constructor(props){
     super(props)
     this.handleInput = this.handleInput.bind(this)
-    this.handleISubmti = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
       password: "",
       stars: ""
@@ -27,7 +27,8 @@ export default class LoginModal extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault()
     this.props.inputPassword(this.state.password)
   }
 
@@ -38,8 +39,8 @@ export default class LoginModal extends Component {
         </div>
         <div className="loginModal">
         <form onSubmit={this.handleSubmit}>
-          <div classNAme="input-group">
-            <input type="text" className="form-control codeInput" placeholder="PASSWORD" value={this.state.stars} onChange={this.handleInput} aria-describedby="basic-addon1"/>
+          <div className="input-group">
+            <input type="text" className="form-control codeInput" placeholder="PASSWORD" value={this.state.password} onChange={this.handleInput} aria-describedby="basic-addon1"/>
           </div>
         </form>
         </div>
