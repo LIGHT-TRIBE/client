@@ -36,10 +36,7 @@ export default class Matrix extends Component {
   }
 }
 
-
-
-
-// findMultiDimArray(i){
+// const findMultiDimArray=(i)=>{
 //   const RGBdata = {x:0,y:0}
 //   if (i<64){
 //     let base =i+100
@@ -47,5 +44,7 @@ export default class Matrix extends Component {
 //   } else {
 //     RGBdata.x= i %64
 //   }
-//   RGBdata.y = i-RGBdata.x/64
+//   RGBdata.y = (i-RGBdata.x)/64
+//   console.log(RGBdata)
+//   return RGBdata
 // }
