@@ -5,26 +5,28 @@ export const SET_ACTIVE_COLOR = 'set_active_color'
 export const INPUT_PASSWORD = 'input_password'
 
 export function inputPassword(password){
-  const data = {password:password}
-  const auth=(password)=>{
-    const url = "http://localhost:3000/auth"
+  const data = {"password":password}
+  console.log(JSON.stringify(data));
+  const auth=()=>{
+    const url = "https://constellation.herokuapp.com/auth/"
     const format = new Request(url, {
       method: 'POST',
       body:JSON.stringify(data),
-      mode:'cors',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json; charset=utf-8'
       }
     })
     return fetch(format)
-      .then((res)=>res.json()).then(res=>
-      localStorage.auth = res.message)
-      .catch(err=>console.log(err))
+      .then((res)=>{
+        return res.json()
+      }).then(res=>{
+        console.log(res);
+        localStorage.auth = res.message
+      })
   }
   return {
     type:INPUT_PASSWORD,
-    payload: auth(password)
+    payload: auth()
   }
 
 }
