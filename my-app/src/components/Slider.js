@@ -8,13 +8,15 @@ export default class Slider extends Component {
   }
 
   handleChange(color, e){
-    const format = `rgb(${color.rgb.r},${color.rgb.g},${color.rgb.b})`
-    this.props.setColor(format)
+    const {rgb} = color
+    const RGB = `rgb(${rgb.r},${rgb.g},${rgb.b})`
+    this.props.setColor(RGB)
   }
 
   render() {
     return (
-      <SliderPicker onChangeComplete={this.handleChange} color={this.props.activeColor}/>
+      <SliderPicker
+        onChangeComplete={this.handleChange} color={this.props.activeColor}/>
     )
   }
 }

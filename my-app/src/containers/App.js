@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { socket } from '../Store'
 import Header from '../components/Header'
 import Matrix from '../components/Matrix'
-import {setActiveColor, fetchPalette, exportSocketsUpdate, inputPassword} from '../actions'
 import LoginModal from '../components/LoginModal'
+import {setActiveColor, exportSocketsUpdate, inputPassword} from '../actions'
 
 class App extends Component {
   constructor(props){
@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {users: 0}
     this.updateState = this.updateState.bind(this)
   }
-  componentWillMount(){this.props.onFetchPalette()}
 
   updateState(i, updatedColor){
     const data = this.props.data.socketsData.matrixState
@@ -22,25 +21,24 @@ class App extends Component {
   }
 
   render() {
-    socket.on('users', (data)=>{
+    socket.on('users', data=>{
       this.setState({users: data.concurrentUsers})
     })
-    const {colorData} = this.props.data
+    const {activeColor} = this.props.data.colorData
     return (
       <div className="App grey">
         <div>
-          {localStorage.auth !== undefined && <LoginModal inputPassword={this.props.onInputPassword}/>}
+          {localStorage.auth !== 'Enjoy!' && <LoginModal inputPassword={this.props.onInputPassword}/>}
           <Header
-            palette={colorData.palette}
             setColor={this.props.onSetActiveColor}
-            activeColor={colorData.activeColor}/>
+            activeColor={activeColor}/>
           <Matrix
             dummyArray={this.props.data.socketsData.dummyArray}
             realArray={this.props.data.socketsData.matrixState}
-            activeColor={colorData.activeColor}
+            activeColor={activeColor}
             exportSocketsUpdate={this.props.onExportSocketsUpdate}
             updateState={this.updateState}/>
-          <div className="userNum">{this.state.users} active {this.state.users==1?'user':'users'}</div>
+          <div className="userNum">{this.state.users} active {this.state.users===1?'user':'users'}</div>
         </div>
       </div>
     )
@@ -52,7 +50,6 @@ const mapStateToProps=(state)=>{ return {data:state} }
 const mapDispatchToProps=(dispatch)=>{
   return{
     onSetActiveColor:(color)=>{dispatch(setActiveColor(color))},
-    onFetchPalette:()=>{dispatch(fetchPalette())},
     onExportSocketsUpdate:(data)=>{dispatch(exportSocketsUpdate(data))},
     onInputPassword:(password)=>{dispatch(inputPassword(password))}
   }

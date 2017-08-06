@@ -18,8 +18,7 @@ export default class Matrix extends Component {
   }
 
   render() {
-    const current = this.props.realArray
-    const input = this.props.realArray?this.props.realArray:this.state.cachedArray
+    const input = this.props.realArray ? this.props.realArray : this.state.cachedArray
     const matrix = input.map((color, i)=>{
       return (
         <Dot key={i}
@@ -35,16 +34,3 @@ export default class Matrix extends Component {
     )
   }
 }
-
-// const findMultiDimArray=(i)=>{
-//   const RGBdata = {x:0,y:0}
-//   if (i<64){
-//     let base =i+100
-//     RGBdata.x=base%64
-//   } else {
-//     RGBdata.x= i %64
-//   }
-//   RGBdata.y = (i-RGBdata.x)/64
-//   console.log(RGBdata)
-//   return RGBdata
-// }

@@ -1,31 +1,30 @@
-import axios from 'axios'
 export const IMPORT_SOCKETS_UPDATE = 'server/import_master_update'
 export const EXPORT_SOCKETS_UPDATE = 'server/export_master_update'
 export const UPDATE_PIXEL_VALUE = 'update_pixel_value'
 export const SET_ACTIVE_COLOR = 'set_active_color'
-export const FETCH_PALETTE = 'fetch_palette'
 export const INPUT_PASSWORD = 'input_password'
 
 export function inputPassword(password){
-  const auth=()=>{
-    const url = "http://localhost/3000/auth"
+  const data = {password:password}
+  const auth=(password)=>{
+    const url = "http://localhost:3000/auth"
     const format = new Request(url, {
       method: 'POST',
-      body:{"password":password},
-      headers:{
+      body:JSON.stringify(data),
+      mode:'cors',
+      headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json; charset=utf-8'
       }
     })
     return fetch(format)
-      .then((res)=>{
-        console.log(res);
-        return res.json()})
+      .then((res)=>res.json()).then(res=>
+      localStorage.auth = res.message)
       .catch(err=>console.log(err))
   }
   return {
     type:INPUT_PASSWORD,
-    payload: auth()
+    payload: auth(password)
   }
 
 }
@@ -55,24 +54,5 @@ export function setActiveColor(color){
   return {
     type:SET_ACTIVE_COLOR,
     payload: color
-  }
-}
-
-export function fetchPalette(){
-  const actualPalette = {
-    purple: "rgb(199,11,255)",
-    blue: "rgb(11,132,203)",
-    green: "rgb(26,216,9)",
-    yellow: "rgb(248,243,41)",
-    orange: "rgb(247,163,20)",
-    red: "rgb(250,48,32)",
-    magenta: "rgb(218,42,100)",
-    pink: "rgb(246,65,156)",
-    white: "rgb(255,255,255)",
-    black: "rgb(0,0,0)"
-  }
-  return {
-    type:FETCH_PALETTE,
-    payload:actualPalette
   }
 }
