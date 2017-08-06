@@ -14,7 +14,7 @@ export default class LoginModal extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.inputPassword(this.state.password)
+    this.props.inputPassword(this.state.password, this.props.loggedIn)
   }
 
   render(){

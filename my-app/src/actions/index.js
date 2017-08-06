@@ -4,7 +4,7 @@ export const UPDATE_PIXEL_VALUE = 'update_pixel_value'
 export const SET_ACTIVE_COLOR = 'set_active_color'
 export const INPUT_PASSWORD = 'input_password'
 
-export function inputPassword(password){
+export function inputPassword(password, isLoggedIn){
   const data = {"password":password}
   console.log(JSON.stringify(data));
   const auth=()=>{
@@ -22,6 +22,7 @@ export function inputPassword(password){
       }).then(res=>{
         console.log(res);
         localStorage.auth = res.message
+        isLoggedIn()
       })
   }
   return {

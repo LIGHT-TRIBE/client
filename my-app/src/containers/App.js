@@ -9,8 +9,10 @@ import {setActiveColor, exportSocketsUpdate, inputPassword} from '../actions'
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {users: 0}
+    this.state = {users: 0,
+                  loggedIn: false}
     this.updateState = this.updateState.bind(this)
+    this.loggedIn = this.loggedIn.bind(this)
   }
 
   updateState(i, updatedColor){
@@ -18,6 +20,10 @@ class App extends Component {
     const updatedArr = data.slice()
     updatedArr[i] = {backgroundColor: updatedColor.replace(/\s+/g,'')}
     this.props.onExportSocketsUpdate({index: i, data: updatedArr[i]})
+  }
+
+  loggedIn(){
+    this.forceUpdate();
   }
 
   render() {
@@ -28,7 +34,7 @@ class App extends Component {
     return (
       <div className="App grey">
         <div>
-          {localStorage.auth !== 'Enjoy!' && <LoginModal inputPassword={this.props.onInputPassword}/>}
+          {localStorage.auth !== 'Enjoy!' && <LoginModal inputPassword={this.props.onInputPassword} loggedIn={this.loggedIn}/>}
           <Header
             setColor={this.props.onSetActiveColor}
             activeColor={activeColor}/>
@@ -51,7 +57,7 @@ const mapDispatchToProps=(dispatch)=>{
   return{
     onSetActiveColor:(color)=>{dispatch(setActiveColor(color))},
     onExportSocketsUpdate:(data)=>{dispatch(exportSocketsUpdate(data))},
-    onInputPassword:(password)=>{dispatch(inputPassword(password))}
+    onInputPassword:(password, isLoggedIn)=>{dispatch(inputPassword(password, isLoggedIn))}
   }
 }
 
