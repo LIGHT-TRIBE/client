@@ -4,14 +4,14 @@ import io from 'socket.io-client'
 import Header from '../components/Header'
 import Matrix from '../components/Matrix'
 import LoginModal from '../components/LoginModal'
-import {setActiveColor, exportSocketsUpdate, inputPassword} from '../actions'
+import Footer from '../components/Footer'
+import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails} from '../actions'
 var socket = io('https://constellation.herokuapp.com/users')
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {users: 0,
-                  loggedIn: false}
+    this.state = {users: 0}
     this.updateState = this.updateState.bind(this)
     this.loggedIn = this.loggedIn.bind(this)
   }
@@ -46,7 +46,9 @@ class App extends Component {
             activeColor={activeColor}
             exportSocketsUpdate={this.props.onExportSocketsUpdate}
             updateState={this.updateState}/>
-          <div className="userNum">{this.state.users} active {this.state.users===1?'user':'users'}</div>
+          <Footer
+            users={this.state.users}
+            fetchThumbnails={this.props.onFetchThumbnails}/>
         </div>
       </div>
     )
@@ -59,7 +61,8 @@ const mapDispatchToProps=(dispatch)=>{
   return{
     onSetActiveColor:(color)=>{dispatch(setActiveColor(color))},
     onExportSocketsUpdate:(data)=>{dispatch(exportSocketsUpdate(data))},
-    onInputPassword:(password, isLoggedIn)=>{dispatch(inputPassword(password, isLoggedIn))}
+    onInputPassword:(password, isLoggedIn)=>{dispatch(inputPassword(password, isLoggedIn))},
+    onFetchThumbnails:()=>{dispatch(fetchThumbnails())}
   }
 }
 
