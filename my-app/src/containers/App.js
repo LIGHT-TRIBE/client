@@ -16,10 +16,12 @@ class App extends Component {
   }
 
   updateState(i, updatedColor){
-    const data = this.props.data.socketsData.matrixState
-    const updatedArr = data.slice()
-    updatedArr[i] = {backgroundColor: updatedColor.replace(/\s+/g,'')}
-    this.props.onExportSocketsUpdate({index: i, data: updatedArr[i]})
+    if(i !== undefined && updatedColor !== undefined && this.props.data.socketsData.matrixState !==undefined){
+      const data = this.props.data.socketsData.matrixState
+      const updatedArr = data.slice()
+      updatedArr[i] = {backgroundColor: updatedColor.replace(/\s+/g,'')}
+      this.props.onExportSocketsUpdate({index: i, data: updatedArr[i]})
+    }
   }
 
   loggedIn(){

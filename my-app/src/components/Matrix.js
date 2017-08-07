@@ -18,7 +18,7 @@ export default class Matrix extends Component {
   }
 
   render() {
-    const input = this.props.realArray ? this.props.realArray : this.state.cachedArray
+    const input = this.props.realArray != undefined ? this.props.realArray : this.state.cachedArray
     const matrix = input.map((color, i)=>{
       return (
         <Dot key={i}

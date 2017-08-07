@@ -33,6 +33,7 @@ export function inputPassword(password, isLoggedIn){
 }
 
 export function exportSocketsUpdate(data){
+  console.log(data);
   return {
     type:EXPORT_SOCKETS_UPDATE,
     payload: data
@@ -40,6 +41,7 @@ export function exportSocketsUpdate(data){
 }
 
 export function importSocketsUpdate(data){
+  console.log(data);
   return {
     type:IMPORT_SOCKETS_UPDATE,
     payload: data
