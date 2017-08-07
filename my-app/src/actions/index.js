@@ -3,6 +3,52 @@ export const EXPORT_SOCKETS_UPDATE = 'server/export_master_update'
 export const UPDATE_PIXEL_VALUE = 'update_pixel_value'
 export const SET_ACTIVE_COLOR = 'set_active_color'
 export const INPUT_PASSWORD = 'input_password'
+export const FETCH_THUMBNAILS = 'fetch_thumbnails'
+export const EXPORT_MATRIX = 'export_matrix'
+
+export function exportMatrix(matrix){
+  const exportState=(matrix)=>{
+    const url = "https://constellation.herokuapp.com/thumbnails/"
+    const format = new Request(url, {
+      method: 'POST',
+      body:JSON.stringify(matrix),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+    return fetch(format)
+      .then((res)=>{
+        return res.json()
+      }).then(res=>{
+        console.log(res);
+      })
+  }
+  return {
+    type:EXPORT_MATRIX,
+    payload: exportState(matrix)
+  }
+}
+
+export function fetchThumbnails(){
+  const fetchThumbs=()=>{
+    const url = "https://constellation.herokuapp.com/thumbnails/"
+    const format = new Request(url, {
+      method: 'GET',
+      mode:'cors',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+  return fetch(format)
+    .then((res)=>{
+      return res.json()
+    }).then(res=>res).catch(err=>new Error(err))
+  }
+  return {
+    type:FETCH_THUMBNAILS,
+    payload: fetchThumbs()
+  }
+}
 
 export function inputPassword(password, isLoggedIn){
   const data = {"password":password}
