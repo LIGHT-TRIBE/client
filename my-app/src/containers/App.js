@@ -15,7 +15,11 @@ class App extends Component {
     this.updateState = this.updateState.bind(this)
     this.loggedIn = this.loggedIn.bind(this)
   }
-
+  componentWillMount(){
+    socket.on('users', data=>{
+      this.setState({users: data.concurrentUsers})
+    })
+  }
   updateState(i, updatedColor){
     if(i !== undefined && updatedColor !== undefined && this.props.data.socketsData.matrixState !==undefined){
       const data = this.props.data.socketsData.matrixState
@@ -24,15 +28,9 @@ class App extends Component {
       this.props.onExportSocketsUpdate({index: i, data: updatedArr[i]})
     }
   }
-
-  loggedIn(){
-    this.forceUpdate();
-  }
+  loggedIn(){ this.forceUpdate() }
 
   render() {
-    socket.on('users', data=>{
-      this.setState({users: data.concurrentUsers})
-    })
     const {activeColor} = this.props.data.colorData
     return (
       <div
