@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { socket } from '../Store'
+import io from 'socket.io-client'
 import Header from '../components/Header'
 import Matrix from '../components/Matrix'
 import LoginModal from '../components/LoginModal'
 import {setActiveColor, exportSocketsUpdate, inputPassword} from '../actions'
+var socket = io('https://constellation.herokuapp.com/users')
 
 class App extends Component {
   constructor(props){
@@ -34,7 +35,8 @@ class App extends Component {
     })
     const {activeColor} = this.props.data.colorData
     return (
-      <div className="App grey">
+      <div
+        className="App grey">
         <div>
           {localStorage.auth !== 'Enjoy!' && <LoginModal inputPassword={this.props.onInputPassword} loggedIn={this.loggedIn}/>}
           <Header
