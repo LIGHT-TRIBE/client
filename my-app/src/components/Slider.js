@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import {HuePicker} from 'react-color'
-import {AlphaPicker} from 'react-color'
+import {SliderPicker} from 'react-color'
+import{CustomSlider} from './CustomSlider'
+// import {AlphaPicker, Huepicker} from 'react-color'
 
 export default class Slider extends Component {
   constructor(props) {
@@ -17,8 +18,9 @@ export default class Slider extends Component {
   render() {
     return (
       <div>
-        <HuePicker onChangeComplete={this.handleChange} color={this.props.activeColor}/>
-        <AlphaPicker onChangeComplete={this.handleChange} color={this.props.activeColor}/>
+        <SliderPicker onChangeComplete={this.handleChange} color={this.props.activeColor}/>
+        {/*<HuePicker onChangeComplete={this.handleChange} color={this.props.activeColor}/>
+        <AlphaPicker onChangeComplete={this.handleChange} color={this.props.activeColor}/>*/}
       </div>
     )
   }
