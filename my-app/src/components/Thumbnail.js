@@ -46,22 +46,14 @@ export default class Thumbnail extends Component {
           const r = parseInt(rgb[0])
           const g = parseInt(rgb[1])
           const b = parseInt(rgb[2])
-          // const x = findMultiDimArray(index).x
-          // const y = findMultiDimArray(index).y
-          // return {r, g, b, x, y}
+
           return {r, g, b}
         })
       }
     }
 
   }
-  // converterStep2(d1){
-  //   const d2 = [[]]
-  //   for (let i in d1){
-  //     if (d2[i].indexOf({d1.r,d1.g,d1.b})!=-1)
-  //   }
-  // }
-  //
+
   makeThumbnail(ctx2){
     // const rgb = this.converter(dummyColorArray())
     const rgb = this.converter(this.props.data)
@@ -73,7 +65,6 @@ export default class Thumbnail extends Component {
       imgData.data[i+2] = rgb[i2].b
       imgData.data[i+3] = 255
     }
-    console.log(imgData);
     ctx2.putImageData(imgData,0,0)
   }
   render() {

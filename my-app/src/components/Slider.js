@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {SliderPicker} from 'react-color'
-import{CustomSlider} from './CustomSlider'
 
 export default class Slider extends Component {
   constructor(props) {
