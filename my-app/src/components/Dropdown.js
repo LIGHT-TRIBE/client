@@ -10,6 +10,7 @@ export default class Dropdown extends Component {
   renderThumbnails(){
     // const data = this.props.fetchThumbnails()
     const data = this.props.realArray
+    {console.log(data);}
 
     //
     // data.map(thumb=>{return(
@@ -25,7 +26,7 @@ export default class Dropdown extends Component {
       <div className="dropdown">
         <div className="dropdown-main">
           <div className="dropdown-container">
-            {this.renderThumbnails()}
+            {this.props.realArray != [] && this.renderThumbnails()}
           </div>
         </div>
       </div>

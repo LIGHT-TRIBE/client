@@ -53,7 +53,7 @@ class App extends Component {
           <Footer
             users={this.state.users}
             fetchThumbnails={this.props.onFetchThumbnails}
-            realArray={dummyColorArray}/>
+            realArray={dummyColorArray()}/>
         </div>
       </div>
     )
