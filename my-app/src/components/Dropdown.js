@@ -6,18 +6,28 @@ export default class Dropdown extends Component {
   constructor(props) {
     super(props)
     this.renderThumbnails = this.renderThumbnails.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentWillMount(){
+    this.props.fetchThumbnails()
   }
 
   renderThumbnails(){
-    // const data = this.props.fetchThumbnails()
-    const data = this.props.realArray
+
+    const data = this.props.allThumbnails
     const dum = dummyColorArray(Math.floor(Math.random()*255))
     const arr = [dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum]
-    return arr.map((thumb, i)=>{
+    return data.map((thumb, i)=>{
       return(
-      <Thumbnail className="thumbnail" key={i} data={thumb}/>
+      <Thumbnail className="thumbnail" key={i} data={thumb.data}/>
       )
     })
+  }
+
+  handleClick(e){
+    e.preventDefault();
+    this.props.exportMatrix(this.props.realArray)
   }
 
   render() {
@@ -33,7 +43,7 @@ export default class Dropdown extends Component {
               <div className="thumbnails-container">
                 <Thumbnail className="" data={this.props.realArray}/>
                 <div className="thumbnail">
-                  <div className="submit-btn"> SUBMIT </div>
+                  <div className="submit-btn" onClick={this.handleClick}> SUBMIT </div>
                 </div>
               </div>
             <hr/>
