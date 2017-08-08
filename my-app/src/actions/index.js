@@ -21,7 +21,6 @@ export function exportMatrix(matrix){
       .then((res)=>{
         return res.json()
       }).then(res=>{
-        //console.log(res);
         return res
       })
   }
@@ -46,7 +45,6 @@ export function fetchThumbnails(){
     .then((res)=>{
       return res.json()
     }).then((res)=>{
-      console.log(res)
       return res
     }).catch(err=>new Error(err))
   }
@@ -58,7 +56,6 @@ export function fetchThumbnails(){
 
 export function inputPassword(password, isLoggedIn){
   const data = {"password":password}
-  console.log(JSON.stringify(data));
   const auth=()=>{
     const url = "https://constellation.herokuapp.com/auth/"
     const format = new Request(url, {
@@ -72,7 +69,6 @@ export function inputPassword(password, isLoggedIn){
       .then((res)=>{
         return res.json()
       }).then(res=>{
-        console.log(res);
         localStorage.auth = res.message
         isLoggedIn()
       })

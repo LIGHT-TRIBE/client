@@ -7,22 +7,17 @@ import LoginModal from '../components/LoginModal'
 import Footer from '../components/Footer'
 import ThumbnailPopup from '../components/ThumbnailPopup'
 import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails, exportMatrix} from '../actions'
-import socket from '../socket'
+
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {users: 0, showPopup:false}
+    this.state = {showPopup:false}
     const binder=Ms=>Ms.forEach(m=>this[m]=this[m].bind(this))
     binder(['togglePopup', 'loggedIn', 'updateState', 'viewThumbFullSize'])
 
   }
-  componentWillMount(){
-    socket.on('users', data=>{
-      console.log(data)
-      this.setState({users: data.concurrentUsers})
-    })
-  }
+
 
   togglePopup(){this.setState({showPopup:!this.state.showPopup})}
 
@@ -65,7 +60,6 @@ class App extends Component {
             updateState={this.updateState}/>
           <Footer
             viewThumbFullSize={this.viewThumbFullSize}
-            users={this.state.users}
             fetchThumbnails={this.props.onFetchThumbnails}
             realArray={this.props.data.socketsData.matrixState}
             exportMatrix={this.props.onStoreThumbnails}
