@@ -13,7 +13,9 @@ export default class Matrix extends Component {
   }
 
   sendSocketsState(i, updatedColor){
-    this.setState({cachedArray:this.props.realArray})
+    if(this.props.realArray != undefined){
+      this.setState({cachedArray:this.props.realArray})
+    }
     this.props.updateState(i, updatedColor)
   }
 
