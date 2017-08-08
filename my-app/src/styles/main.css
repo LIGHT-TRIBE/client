@@ -133,10 +133,55 @@ body {
   text-align: center;
   font-family: dot_matrix;
 }
+.footer{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding:10px;
+  min-height:200px;
+}
+
+.footer-container{
+  width:80%;
+  height:100%;
+  margin-left:10%;
+}
 
 .userNum{
-  margin-left:10%;
+  display: flex;
+  justify-content: space-between;
   font-family: sans-serif;
   color: #979797;
   margin-bottom:20px;
+}
+
+.dropDownToggle{
+  border-radius:2px;
+  font-size: 1em;
+  padding:2px;
+  box-shadow: 0 0 2px rgb(200,200,200);
+}
+
+.dropDownToggle:hover{
+  box-shadow: 0 0 2px red;
+  cursor: pointer;
+}
+
+.thumbnails-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding:20px;
+}
+
+.thumbnail{
+  padding:10px;
+  margin:10px;
+  box-shadow: 0 0 2px rgb(200,200,200);
+}
+
+.submit-btn{
+  width:64px;
+  height:32px;
 }
