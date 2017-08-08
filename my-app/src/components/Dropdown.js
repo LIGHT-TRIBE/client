@@ -14,14 +14,8 @@ export default class Dropdown extends Component {
   }
 
   renderThumbnails(){
-
-    const data = this.props.allThumbnails
-    const dum = dummyColorArray(Math.floor(Math.random()*255))
-    const arr = [dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum]
-    return data.map((thumb, i)=>{
-      return(
-      <Thumbnail className="thumbnail" key={i} data={thumb.data}/>
-      )
+    return this.props.allThumbnails.map((thumb, i)=>{
+      return(<Thumbnail className="thumbnail" key={i} data={thumb.data}/>)
     })
   }
 

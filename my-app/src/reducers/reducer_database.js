@@ -1,6 +1,9 @@
 import {FETCH_THUMBNAILS, EXPORT_MATRIX} from '../actions'
+import dummyColorArray from './dummy_array_generator'
 
-const initialState = {thumbnails:[]}
+const initialState = {
+  thumbnails:[dummyColorArray(Math.floor(Math.random()*255)),dummyColorArray(Math.floor(Math.random()*255))]
+}
 
 export default function databaseReducer(state = {}, action){
   switch (action.type) {

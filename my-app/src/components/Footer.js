@@ -14,7 +14,7 @@ class Footer extends Component {
           <div className="userNum">{this.props.users} active {this.props.users===1?'user':'users'}
             <div
               className="dropDownToggle"
-              onClick={()=>{this.setState({showDropdown:!this.state.showDropdown})}}>✩<FaImage/></div>
+              onClick={()=>{this.setState({showDropdown:!this.state.showDropdown})}}> ✩<FaImage/> </div>
           </div>
           {this.state.showDropdown &&
             <Dropdown
