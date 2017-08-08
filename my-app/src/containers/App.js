@@ -6,6 +6,10 @@ import Matrix from '../components/Matrix'
 import LoginModal from '../components/LoginModal'
 import Footer from '../components/Footer'
 import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails} from '../actions'
+
+import dummyColorArray from '../reducers/dummy_array_generator'
+
+
 var socket = io('https://constellation.herokuapp.com/users')
 
 class App extends Component {
@@ -48,7 +52,8 @@ class App extends Component {
             updateState={this.updateState}/>
           <Footer
             users={this.state.users}
-            fetchThumbnails={this.props.onFetchThumbnails}/>
+            fetchThumbnails={this.props.onFetchThumbnails}
+            realArray={dummyColorArray}/>
         </div>
       </div>
     )

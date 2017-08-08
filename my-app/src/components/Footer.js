@@ -5,8 +5,7 @@ import {FaImage} from 'react-icons/lib/fa'
 class Footer extends Component {
   constructor(props) {
     super(props)
-    this.state={showDropdown:false}
-
+    this.state={showDropdown:true}
   }
   render() {
     return (
@@ -16,7 +15,8 @@ class Footer extends Component {
           <FaImage/>✩
         </div>
         {this.state.showDropdown &&
-          <Dropdown fetchThumbnails={this.props.onFetchThumbnails}/>}
+          <Dropdown
+            realArray={this.props.realArray} fetchThumbnails={this.props.fetchThumbnails}/>}
       </div>
     )
   }

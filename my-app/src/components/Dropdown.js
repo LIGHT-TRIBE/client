@@ -8,10 +8,16 @@ export default class Dropdown extends Component {
   }
 
   renderThumbnails(){
-    const data = this.props.fetchThumbnails()
-    data.map(thumb=>{return(
-      <Thumbnail data={thumb.backgroundColor}/>
-    )})
+    // const data = this.props.fetchThumbnails()
+    const data = this.props.realArray
+
+    //
+    // data.map(thumb=>{return(
+    //   <Thumbnail data={thumb.backgroundColor}/>
+    // )})
+    return(
+      <Thumbnail data={data}/>
+    )
   }
 
   render() {
