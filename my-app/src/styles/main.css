@@ -227,23 +227,18 @@ hr {
 }
 
 .thumbnailButton{
-  transform: scale(2);
+  transform: scale(1.5);
   border: none;
   background: transparent;
 }
 
 .saveText{
-  display: none;
+  margin-top: 23px;
   width: 130px;
   color:white;
   z-index: 10;
   position: absolute;
-  margin-top: -20px;
   font-family: 'dot_matrix';
   background-color:rgba(0,0,0,0.5);
   text-align: center;
-}
-
-.saveText:hover {
-  display: block;
 }

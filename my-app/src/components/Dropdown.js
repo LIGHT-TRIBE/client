@@ -5,9 +5,13 @@ import Thumbnail from './Thumbnail'
 export default class Dropdown extends Component {
   constructor(props) {
     super(props)
-    this.state={selectedThumb:[], showPopup:false}
+    this.state={
+      selectedThumb:[],
+      showPopup:false,
+      showSave: false
+    }
     const binder=Ms=>Ms.forEach(m=>this[m]=this[m].bind(this))
-    binder(['renderThumbnails', 'handleClick'])
+    binder(['renderThumbnails', 'handleClick', 'showSave'])
   }
 
   componentWillMount(){
@@ -40,6 +44,12 @@ export default class Dropdown extends Component {
     this.props.exportMatrix(this.props.realArray)
   }
 
+  showSave(){
+    this.setState({
+      showSave: true
+    })
+  }
+
   render() {
     return (
       <div className="dropdown">
@@ -51,8 +61,10 @@ export default class Dropdown extends Component {
             </div>
             <hr/>
               <div className="thumbnails-container">
-                <div className="thumbnailSubmit">
-                  <div className="saveText"><h1>SAVE</h1></div>
+                <div className="thumbnailSubmit" onMouseEnter={this.showSave} onMouseLeave={this.showSave}>
+                  <div className="saveText">
+                    {this.state.showSave && <h1>SAVE</h1>}
+                    </div>
                     <a className="thumbnailButton" onClick={this.handleClick}>
                       <Thumbnail thumbnailClass="" data={this.props.realArray}/>
                     </a>
