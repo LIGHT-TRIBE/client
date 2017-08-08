@@ -1,21 +1,6 @@
 import React, {Component} from 'react'
+import dummyColorArray from '../reducers/dummy_array_generator'
 import Thumbnail from './Thumbnail'
-
-const dummyColorArray=()=>{
-  const newRandomColor=()=>{
-    const dot = [];
-    [0,0,0].forEach(x=>dot.push(Math.floor(Math.random()*255)))
-    return {backgroundColor:`rgb(${dot[0]},${dot[1]},${dot[2]})`}
-  }
-  const makeDummyArray=()=>{
-    const initialState = []
-    for (let i = 0; i < 2048; i++){
-      initialState.push(newRandomColor())
-    }
-    return initialState
-  }
-  return makeDummyArray()
-}
 
 export default class Dropdown extends Component {
   constructor(props) {
@@ -26,16 +11,13 @@ export default class Dropdown extends Component {
   renderThumbnails(){
     // const data = this.props.fetchThumbnails()
     const data = this.props.realArray
-    const dum = dummyColorArray()
+    const dum = dummyColorArray(Math.floor(Math.random()*255))
     const arr = [dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum,dum]
     return arr.map((thumb, i)=>{
       return(
       <Thumbnail className="thumbnail" key={i} data={thumb}/>
       )
     })
-    // return(
-    //   <Thumbnail data={data}/>
-    // )
   }
 
   render() {

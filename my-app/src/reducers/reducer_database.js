@@ -1,5 +1,7 @@
 import {FETCH_THUMBNAILS, EXPORT_MATRIX} from '../actions'
 
+const initialState = {thumbnails:[]}
+
 export default function databaseReducer(state = {}, action){
   switch (action.type) {
     case FETCH_THUMBNAILS:
