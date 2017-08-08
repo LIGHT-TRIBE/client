@@ -8,7 +8,8 @@ export const EXPORT_MATRIX = 'export_matrix'
 
 export function exportMatrix(matrix){
   const exportState=(matrix)=>{
-    const url = "https://constellation.herokuapp.com/thumbnails/"
+    //const url = "https://constellation.herokuapp.com/thumbnails/"
+    const url = "http://localhost:3000/thumbnails/"
     const format = new Request(url, {
       method: 'POST',
       body:JSON.stringify(matrix),
@@ -20,7 +21,8 @@ export function exportMatrix(matrix){
       .then((res)=>{
         return res.json()
       }).then(res=>{
-        console.log(res);
+        //console.log(res);
+        return res
       })
   }
   return {
@@ -31,7 +33,8 @@ export function exportMatrix(matrix){
 
 export function fetchThumbnails(){
   const fetchThumbs=()=>{
-    const url = "https://constellation.herokuapp.com/thumbnails/"
+    //const url = "https://constellation.herokuapp.com/thumbnails/"
+    const url = "http://localhost:3000/thumbnails/"
     const format = new Request(url, {
       method: 'GET',
       mode:'cors',
@@ -42,7 +45,10 @@ export function fetchThumbnails(){
   return fetch(format)
     .then((res)=>{
       return res.json()
-    }).then(res=>res).catch(err=>new Error(err))
+    }).then((res)=>{
+      console.log(res)
+      return res
+    }).catch(err=>new Error(err))
   }
   return {
     type:FETCH_THUMBNAILS,

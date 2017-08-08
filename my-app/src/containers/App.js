@@ -5,9 +5,10 @@ import Header from '../components/Header'
 import Matrix from '../components/Matrix'
 import LoginModal from '../components/LoginModal'
 import Footer from '../components/Footer'
-import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails} from '../actions'
+import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails, exportMatrix} from '../actions'
 
-var socket = io('https://constellation.herokuapp.com/users')
+//var socket = io('https://constellation.herokuapp.com/users')
+var socket = io('http://localhost:3000/users')
 
 class App extends Component {
   constructor(props){
@@ -50,7 +51,9 @@ class App extends Component {
           <Footer
             users={this.state.users}
             fetchThumbnails={this.props.onFetchThumbnails}
-            realArray={this.props.data.socketsData.matrixState}/>
+            realArray={this.props.data.socketsData.matrixState}
+            exportMatrix={this.props.onStoreThumbnails}
+            allThumbnails={this.props.data.thumbnailsData.thumbnails}/>
         </div>
       </div>
     )
@@ -64,7 +67,8 @@ const mapDispatchToProps=(dispatch)=>{
     onSetActiveColor:(color)=>{dispatch(setActiveColor(color))},
     onExportSocketsUpdate:(data)=>{dispatch(exportSocketsUpdate(data))},
     onInputPassword:(password, isLoggedIn)=>{dispatch(inputPassword(password, isLoggedIn))},
-    onFetchThumbnails:()=>{dispatch(fetchThumbnails())}
+    onFetchThumbnails:()=>{dispatch(fetchThumbnails())},
+    onStoreThumbnails:(matrix)=>{dispatch(exportMatrix(matrix))}
   }
 }
 
