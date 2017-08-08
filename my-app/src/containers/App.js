@@ -7,9 +7,7 @@ import LoginModal from '../components/LoginModal'
 import Footer from '../components/Footer'
 import ThumbnailPopup from '../components/ThumbnailPopup'
 import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails, exportMatrix} from '../actions'
-
-var socket = io('https://constellation.herokuapp.com/users')
-// var socket = io('http://localhost:3000/users')
+import socket from '../socket'
 
 class App extends Component {
   constructor(props){
@@ -21,6 +19,7 @@ class App extends Component {
   }
   componentWillMount(){
     socket.on('users', data=>{
+      console.log(data)
       this.setState({users: data.concurrentUsers})
     })
   }
