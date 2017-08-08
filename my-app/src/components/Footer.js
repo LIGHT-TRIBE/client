@@ -9,7 +9,7 @@ class Footer extends Component {
   }
   render() {
     return (
-      <div className="footer shadow white">
+      <div className="footer grey">
         <div className="footer-container">
           <div className="userNum">{this.props.users} active {this.props.users===1?'user':'users'}
             <div
