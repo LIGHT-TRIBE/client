@@ -30,11 +30,24 @@ export default class Thumbnail extends Component {
   converter(matrix){
     if (matrix.length > 0){
       return matrix.map((each,index)=>{
+        const findMultiDimArray=(i)=>{
+          const RGBdata = {x:0,y:0}
+          if (i<64){
+            RGBdata.x=i
+            RGBdata.y=0
+          } else {
+            RGBdata.x= i %64
+            RGBdata.y = (i-RGBdata.x)/64
+          }
+          return RGBdata
+        }
         const rgb = each.backgroundColor.match(/\d+/g)
         const r = parseInt(rgb[0])
         const g = parseInt(rgb[1])
         const b = parseInt(rgb[2])
-        return {r, g, b}
+        const iX = findMultiDimArray(index).x
+        const iY = findMultiDimArray(index).y
+        return {r, g, b, iX, iY}
       })
     }
   }
@@ -49,6 +62,7 @@ export default class Thumbnail extends Component {
       imgData.data[i+2] = rgb[i2].b
       imgData.data[i+3] = 255
     }
+    console.log(imgData);
     ctx2.putImageData(imgData,0,0)
   }
   render() {

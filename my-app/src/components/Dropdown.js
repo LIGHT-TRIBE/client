@@ -14,9 +14,11 @@ export default class Dropdown extends Component {
   }
 
   renderThumbnails(){
-    return this.props.allThumbnails.map((thumb, i)=>{
-      return(<Thumbnail className="thumbnail" key={i} data={thumb.data}/>)
-    })
+    if(this.props.allThumbnails!=undefined && this.props.allThumbnails.length>0){
+      return this.props.allThumbnails.map((thumb, i)=>{
+        return(<Thumbnail className="thumbnail" key={i} data={thumb.data}/>)
+      })
+    }
   }
 
   handleClick(e){
