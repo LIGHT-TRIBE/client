@@ -18,9 +18,10 @@ class Footer extends Component {
           </div>
           {this.state.showDropdown &&
             <Dropdown
-              realArray={this.props.realArray} fetchThumbnails={this.props.fetchThumbnails} exportMatrix={this.props.exportMatrix} allThumbnails={this.props.allThumbnails}/>}
+              viewThumbFullSize={this.props.viewThumbFullSize}
+              realArray={this.props.realArray}
+              fetchThumbnails={this.props.fetchThumbnails} exportMatrix={this.props.exportMatrix} allThumbnails={this.props.allThumbnails}/>}
         </div>
-
       </div>
     )
   }

@@ -5,23 +5,34 @@ import Header from '../components/Header'
 import Matrix from '../components/Matrix'
 import LoginModal from '../components/LoginModal'
 import Footer from '../components/Footer'
+import ThumbnailPopup from '../components/ThumbnailPopup'
 import {setActiveColor, exportSocketsUpdate, inputPassword, fetchThumbnails, exportMatrix} from '../actions'
 
-//var socket = io('https://constellation.herokuapp.com/users')
-var socket = io('http://localhost:3000/users')
+var socket = io('https://constellation.herokuapp.com/users')
+// var socket = io('http://localhost:3000/users')
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {users: 0}
-    this.updateState = this.updateState.bind(this)
-    this.loggedIn = this.loggedIn.bind(this)
+    this.state = {users: 0, showPopup:false}
+    const binder=Ms=>Ms.forEach(m=>this[m]=this[m].bind(this))
+    binder(['togglePopup', 'loggedIn', 'updateState', 'viewThumbFullSize'])
+
   }
   componentWillMount(){
     socket.on('users', data=>{
       this.setState({users: data.concurrentUsers})
     })
   }
+
+  togglePopup(){this.setState({showPopup:!this.state.showPopup})}
+
+  viewThumbFullSize(data){
+    console.log(data);
+    this.setState({selectedThumb:data})
+    this.togglePopup()
+  }
+
   updateState(i, updatedColor){
     if(i !== undefined && updatedColor !== undefined && this.props.data.socketsData.matrixState !==undefined){
       const data = this.props.data.socketsData.matrixState
@@ -42,6 +53,11 @@ class App extends Component {
           <Header
             setColor={this.props.onSetActiveColor}
             activeColor={activeColor}/>
+          {this.state.showPopup &&
+            <ThumbnailPopup
+              toggle={this.togglePopup}
+              thumbnail={this.state.selectedThumb}/>
+          }
           <Matrix
             dummyArray={this.props.data.socketsData.dummyArray}
             realArray={this.props.data.socketsData.matrixState}
@@ -49,6 +65,7 @@ class App extends Component {
             exportSocketsUpdate={this.props.onExportSocketsUpdate}
             updateState={this.updateState}/>
           <Footer
+            viewThumbFullSize={this.viewThumbFullSize}
             users={this.state.users}
             fetchThumbnails={this.props.onFetchThumbnails}
             realArray={this.props.data.socketsData.matrixState}
