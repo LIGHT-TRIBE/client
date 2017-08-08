@@ -233,8 +233,10 @@ hr {
 }
 
 .saveText{
-  margin-top: 23px;
-  width: 130px;
+  /*margin-top: 23px;*/
+  padding-top: 18px;
+  height: 100px;
+  width: 200px;
   color:white;
   z-index: 10;
   position: absolute;
