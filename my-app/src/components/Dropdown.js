@@ -5,18 +5,31 @@ import Thumbnail from './Thumbnail'
 export default class Dropdown extends Component {
   constructor(props) {
     super(props)
-    this.renderThumbnails = this.renderThumbnails.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.state={selectedThumb:[], showPopup:false}
+    const binder=Ms=>Ms.forEach(m=>this[m]=this[m].bind(this))
+    binder(['renderThumbnails', 'handleClick'])
   }
 
   componentWillMount(){
     this.props.fetchThumbnails()
   }
 
+  // viewThumbFullSize(data){
+  //   console.log(data);
+  //   this.setState({
+  //     selectedThumb:data,
+  //     showPopup:!this.state.showPopup
+  //   })
+  // }
+
   renderThumbnails(){
     if(this.props.allThumbnails!=undefined && this.props.allThumbnails.length>0){
       return this.props.allThumbnails.map((thumb, i)=>{
-        return(<Thumbnail className="thumbnail" key={i} data={thumb.data}/>)
+        return(<Thumbnail
+          viewThumbFullSize={this.props.viewThumbFullSize}
+          className="thumbnail"
+          key={i}
+          data={thumb.data}/>)
       })
     }
   }
