@@ -46,6 +46,14 @@ body {
   height: 40vw;
   margin-bottom:20px;
 }
+.popup {
+  position: absolute;
+  top:15%;
+  background-color: black;
+  z-index: 100;
+  box-shadow:0 0 10px white;
+  border-radius:5px;
+}
 
 .circle {
   width: 1.56%;
@@ -188,7 +196,7 @@ hr {
 
 .thumbnail:hover{
   transform: scale(2);
-  z-index: 5; 
+  z-index: 5;
 }
 
 .submit-btn{
