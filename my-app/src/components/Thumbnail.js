@@ -79,7 +79,7 @@ export default class Thumbnail extends Component {
   render() {
     return (
       <div
-        onClick={()=>{this.props.viewThumbFullSize(this.props.data)}}
+        onClick={()=>{!this.props.submit ? this.props.viewThumbFullSize(this.props.data) : console.log('hi');}}
         className="thumbnail">
         <canvas ref="canvas" width={64} height={32}/>
       </div>

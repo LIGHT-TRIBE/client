@@ -66,7 +66,7 @@ export default class Dropdown extends Component {
                     {this.state.showSave && <h1>SAVE</h1>}
                     </div>
                     <a className="thumbnailButton" onClick={this.handleClick}>
-                      <Thumbnail thumbnailClass="" data={this.props.realArray}/>
+                      <Thumbnail submit={true} data={this.props.realArray}/>
                     </a>
                 </div>
               </div>
