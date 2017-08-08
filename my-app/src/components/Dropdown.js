@@ -25,6 +25,7 @@ export default class Dropdown extends Component {
   renderThumbnails(){
     if(this.props.allThumbnails!=undefined && this.props.allThumbnails.length>0){
       return this.props.allThumbnails.map((thumb, i)=>{
+
         return(<Thumbnail
           viewThumbFullSize={this.props.viewThumbFullSize}
           className="thumbnail"
@@ -50,9 +51,11 @@ export default class Dropdown extends Component {
             </div>
             <hr/>
               <div className="thumbnails-container">
-                <Thumbnail className="" data={this.props.realArray}/>
-                <div className="thumbnail">
-                  <div className="submit-btn" onClick={this.handleClick}> SUBMIT </div>
+                <div className="thumbnailSubmit">
+                  <div className="saveText"><h1>SAVE</h1></div>
+                    <a className="thumbnailButton" onClick={this.handleClick}>
+                      <Thumbnail thumbnailClass="" data={this.props.realArray}/>
+                    </a>
                 </div>
               </div>
             <hr/>

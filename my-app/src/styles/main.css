@@ -188,10 +188,13 @@ hr {
 }
 
 .thumbnail{
-  /*padding:10px;*/
-  margin:10px;
+  padding:0px;
+  margin:40px;
   transition: 1s;
-  background: black;
+  background: transparent;
+  border:none;
+  transform: scale(2);
+  cursor: pointer;
 }
 
 .thumbnail:hover{
@@ -199,11 +202,48 @@ hr {
   z-index: 5;
 }
 
-.submit-btn{
-  width:64px;
-  height:32px;
-}
-
 .navbar-default {
   border: none;
+}
+
+.thumbnailSubmit {
+  padding:0px;
+  margin:20px;
+  transition: 1s;
+  background: transparent;
+  border:none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.thumbnailSubmit:hover{
+  opacity: 1;
+  transform: scale(1.5);
+  z-index: 5;
+  transition: all 1s;
+}
+
+.thumbnailButton{
+  transform: scale(2);
+  border: none;
+  background: transparent;
+}
+
+.saveText{
+  display: none;
+  width: 130px;
+  color:white;
+  z-index: 10;
+  position: absolute;
+  margin-top: -20px;
+  font-family: 'dot_matrix';
+  background-color:rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.saveText:hover {
+  display: block;
 }
