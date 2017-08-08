@@ -163,7 +163,7 @@ body {
 }
 
 .dropDownToggle:hover{
-  box-shadow: 0 0 2px red;
+  box-shadow: 0 0 2px white;
   cursor: pointer;
 }
 
@@ -175,10 +175,20 @@ body {
   padding:20px;
 }
 
+hr {
+  border: none;
+}
+
 .thumbnail{
-  padding:10px;
+  /*padding:10px;*/
   margin:10px;
-  box-shadow: 0 0 2px rgb(200,200,200);
+  transition: 1s;
+  background: black;
+}
+
+.thumbnail:hover{
+  transform: scale(2);
+  z-index: 5; 
 }
 
 .submit-btn{
