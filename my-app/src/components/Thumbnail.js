@@ -67,7 +67,7 @@ export default class Thumbnail extends Component {
   }
   render() {
     return (
-      <div className="thumbnail">
+      <div className={this.props.thumbnailClass}>
         <canvas ref="canvas" width={64} height={32}/>
       </div>
     )
