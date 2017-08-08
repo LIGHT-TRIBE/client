@@ -13,12 +13,13 @@
   }
   .slider-picker{
     margin-top:10px;
+    cursor: pointer;
   }
 }
 
 @font-face {
-    font-family: dot_matrix;
-    src: url(./fonts/dot_matrix/DOTMATRI.TTF);
+  font-family: dot_matrix;
+  src: url(./fonts/dot_matrix/DOTMATRI.TTF);
 }
 
 body {
@@ -27,8 +28,10 @@ body {
 
 .brand {
   font-family: 'dot_matrix';
-  color: #606060;
+  font-size: 46px;
+  color: #808080;
 }
+
 .header-content{
   margin-bottom:20px;
   margin-top:20px;
@@ -43,6 +46,7 @@ body {
   height: 40vw;
   margin-bottom:20px;
 }
+
 .circle {
   width: 1.56%;
   border-radius: 50%;
@@ -60,41 +64,37 @@ body {
   padding-right: 10px;
   height:100%;
 }
+
 .swatch-circle-container{
   display:flex;
   flex-direction: column;
   justify-content: center;
   flex-grow:1;
 }
+
 .swatch-circle {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  /*border: 1px solid #979797;*/
   cursor: pointer;
   margin-right: 5px;
 }
-
-
 
 .slider{
   width:100%;
 }
 
 .shadow {
-    box-shadow: 0px 0px 20px #000000;
-    z-index: 2;
+  box-shadow: 0px 0px 20px #000000;
+  z-index: 2;
 }
 .circle-shadow {
-    box-shadow: 0px 0px 1px #5A5A5A;
-    z-index: 2;
-}
-.grey {
-  background-color: rgb(20,20,20);
+  box-shadow: 0px 0px 1px #5A5A5A;
+  z-index: 2;
 }
 
-.white {
-  background-color: white;
+.grey {
+  background-color: #040707;
 }
 
 
@@ -184,4 +184,8 @@ body {
 .submit-btn{
   width:64px;
   height:32px;
+}
+
+.navbar-default {
+  border: none;
 }
