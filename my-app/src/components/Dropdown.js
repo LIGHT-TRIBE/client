@@ -61,11 +61,11 @@ export default class Dropdown extends Component {
             </div>
             <hr/>
               <div className="thumbnails-container">
-                <div className="thumbnailSubmit" onMouseEnter={this.showSave}>
+                <div className="thumbnailSubmit" onClick={this.handleClick} onMouseEnter={this.showSave}>
                   <div className="saveText">
                     {this.state.showSave && <h1>SAVE</h1>}
                     </div>
-                    <a className="thumbnailButton" onClick={this.handleClick}>
+                    <a className="thumbnailButton" >
                       <Thumbnail submit={true} data={this.props.realArray}/>
                     </a>
                 </div>
