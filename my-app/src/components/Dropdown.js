@@ -18,14 +18,6 @@ export default class Dropdown extends Component {
     this.props.fetchThumbnails()
   }
 
-  // viewThumbFullSize(data){
-  //   console.log(data);
-  //   this.setState({
-  //     selectedThumb:data,
-  //     showPopup:!this.state.showPopup
-  //   })
-  // }
-
   renderThumbnails(){
     if(this.props.allThumbnails!=undefined && this.props.allThumbnails.length>0){
       return this.props.allThumbnails.map((thumb, i)=>{
@@ -61,7 +53,7 @@ export default class Dropdown extends Component {
             </div>
             <hr/>
               <div className="thumbnails-container">
-                <div className="thumbnailSubmit" onMouseEnter={this.showSave}>
+                <div className="thumbnailSubmit" onMouseEnter={this.showSave} onMouseLeave={this.showSave}>
                   <div className="saveText">
                     {this.state.showSave && <h1>SAVE</h1>}
                     </div>
