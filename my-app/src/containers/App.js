@@ -22,8 +22,7 @@ class App extends Component {
   togglePopup(){this.setState({showPopup:!this.state.showPopup})}
 
   viewThumbFullSize(data){
-    this.setState({selectedThumb:data})
-    this.togglePopup()
+    this.setState({selectedThumb:data, showPopup:true})
   }
 
   updateState(i, updatedColor){
